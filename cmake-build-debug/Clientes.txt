@@ -1,0 +1,2 @@
+1,juan,degiovanni,oro,2003,activo
+2,jose,strumia,black,2005,inactivo

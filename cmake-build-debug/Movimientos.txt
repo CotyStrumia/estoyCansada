@@ -1,0 +1,8 @@
+LISTADO DE TRANSACCIONES
+Numero de cliente:3
+Numero de transaccion:1
+Cantidad: 1000
+Tipo: D
+Dia: 3
+Mes: 1000
+Anio: 2023
