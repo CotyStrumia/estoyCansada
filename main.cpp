@@ -33,7 +33,7 @@ bool verificarFecha(int cDia, int cMes, int cAnio) {
     } else if (cMes < 0 || cMes > 12) {
         return false;
     }
-}
+}            //LISTO
 
 bool verificadorAlta(int cAnio) {
     if (cAnio < 2000 || cAnio > 2023) {
@@ -41,9 +41,11 @@ bool verificadorAlta(int cAnio) {
     } else {
         return true;
     }
-}
+}                               //LISTO
 
 void trSeisMeses() {
+
+
     for (int i = 0; i < 50; i++) {
         for (int j = 0; j < 50; j++) {
             if (Cliente[i].Transacciones[j].getAnio() == 2023 && Cliente[i].Transacciones[j].getMes() > 0 &&
@@ -53,35 +55,38 @@ void trSeisMeses() {
         }
     }
 
-}
+
+}                                            //LISTO
 
 void trAnio() {
     for (int i = 0; i < 50; i++) {
         for (int j = 0; j < 50; j++) {
-            if (Cliente[i].Transacciones[j].getAnio() == 2023 && Cliente[i].Transacciones[j].getAnio() == 2022 &&
+            if ((Cliente[i].Transacciones[j].getAnio() == 2023 || Cliente[i].Transacciones[j].getAnio() == 2022) &&
                 Cliente[i].Transacciones[j].getMes() > 0 && Cliente[i].Transacciones[j].getMes() < 7) {
                 Cliente[i].Transacciones[j].mostrarTransaccion();
             }
         }
     }
-}
+}                                                 //LISTO
 
 void trTotal() {
-    for (int i = 0; i < 50; i++) {
-        for (int j = 0; j < 50; i++) {
-            if (Cliente[i].Transacciones[j].getMes() != 0) {
-                Cliente[i].Transacciones[j].mostrarTransaccion();
-            }
-        }
+
+    int i, j=0;
+    for (i=0; i<50; i++) {
+         while (Cliente[i].Transacciones[j].getCant() != 0) {
+             Cliente[i].Transacciones[j].mostrarTransaccion();
+             j++;
+         }
     }
-}
+
+}               //LISTO
 
 void menuTiempo() {
     int opc = 1;
     while (opc > 0 && opc < 4) {
         cout << "Ingrese el periodo de tiempo que requiere: " << endl;
         cout << "1. Por 6 meses" << endl;
-        cout << "2. Por un anioo" << endl;
+        cout << "2. Por un anio" << endl;
         cout << "3. Total" << endl;
         cout << "4. Volver al menu principal" << endl;
         cin >> opc;
@@ -102,7 +107,7 @@ void menuTiempo() {
 
         }
     }
-}
+}                     //LISTO
 
 void generarClientesTxt() {
 
@@ -117,28 +122,28 @@ void generarClientesTxt() {
     }
     archivoClientes.close();
     ifstream fileloaded;
-}
+}             //LISTO
 
 void generarMovimientosTxt() {
 
-    ofstream archivoMovimientos;
-    archivoMovimientos.open("Movimientos.txt");
-    for (int i = 0; i < 50; i++) {
-        for (int j = 0; j < 50; j++) {
-            if (Cliente[i].Transacciones[j].getNroTran() != 0) {
-                archivoMovimientos << Cliente[i].getNumero() << "," << Cliente[i].Transacciones[j].getNroTran() << ","
-                                   << Cliente[i].Transacciones[j].getCant() << ","
-                                   << Cliente[i].Transacciones[j].getTipo() << ","
-                                   << Cliente[i].Transacciones[j].getDia() << ","
-                                   << Cliente[i].Transacciones[j].getMes() << ","
-                                   << Cliente[i].Transacciones[j].getAnio() << endl;
+        ofstream archivoMovimientos;
+        archivoMovimientos.open("Movimientos.txt");
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 50; j++) {
+                if (Cliente[i].Transacciones[j].getNroTran() != 0) {
+                    archivoMovimientos << Cliente[i].getNumero() << "," << Cliente[i].Transacciones[j].getNroTran() << ","
+                                       << Cliente[i].Transacciones[j].getCant() << ","
+                                       << Cliente[i].Transacciones[j].getTipo() << ","
+                                       << Cliente[i].Transacciones[j].getDia() << ","
+                                       << Cliente[i].Transacciones[j].getMes() << ","
+                                       << Cliente[i].Transacciones[j].getAnio() << endl;
+                }
             }
-        }
 
-    }
-    archivoMovimientos.close();
-    ifstream fileloaded;
-}
+        }
+        archivoMovimientos.close();
+        ifstream fileloaded;
+    }                                   //LISTO
 
 void altaCliente() {
     int num, cinApertura;
@@ -176,7 +181,7 @@ void altaCliente() {
     } else {
         cout << "Anio invalido" << endl;
     }
-}
+}                    //LISTO
 
 void bajaCliente() {
     int cinNumero;
@@ -190,7 +195,7 @@ void bajaCliente() {
 
         }
     }
-}
+}                    //LISTO
 
 void extraccion() { //LISTO BR0
     int cinNumero, dia, mes, anio, i = 0;
@@ -237,7 +242,7 @@ void extraccion() { //LISTO BR0
                 }
 
             } else if (i == 49 && Cliente[i].getNumero() != cinNumero) {
-                cout << "Cliente no encontrado" << endl;
+                cout << "Cliente no encontrado o dado de baja" << endl;
             }
         }
 
@@ -245,7 +250,7 @@ void extraccion() { //LISTO BR0
         cout << "La fecha ingresada es invalida" << endl;
     }
 
-}
+}                     //LISTO
 
 void deposito() {
     int cinNumero, dia, mes, anio, i = 0;
@@ -286,7 +291,7 @@ void deposito() {
                 }
 
             } else if (i == 49 && Cliente[i].getNumero() != cinNumero) {
-                cout << "Cliente no encontrado" << endl;
+                cout << "Cliente no encontrado o dado de baja" << endl;
 
             }
         }
@@ -294,9 +299,9 @@ void deposito() {
         cout << "La fecha ingresada es invalida" << endl;
     }
 
-}
+}                       //LISTO
 
-void consultaPorNumeroCli() {
+void consultaPorNumeroCli() {               //LISTO
     int cinNumero;
     cout << "Ingrese el numero de cliente" << endl;
     cin >> cinNumero;
@@ -308,9 +313,9 @@ void consultaPorNumeroCli() {
             cout << "Cliente no encontrado" << endl;
         }
     }
-}
+}           //LISTO
 
-void consultaTrPorNumCliente() {
+void consultaTrPorNumCliente() {            //LISTO
     int cinNumero;
     cout << "Ingrese el numero de cliente: " << endl;
     cin >> cinNumero;
@@ -318,26 +323,26 @@ void consultaTrPorNumCliente() {
     bool bandera = false;
 
     for (int j = 0; j < 50; j++) {
-
         if (Cliente[j].getNumero() == cinNumero) {
-            for (int i = 0; i < 50; ++i) {
-                if (Cliente[cinNumero - 1].Transacciones[i].getCant() != 0) {
-                    Cliente[cinNumero - 1].Transacciones[i].mostrarTransaccion();
-                    bandera = true;
-                }
-            }
-
+            bandera = true;
         }
+    }
 
+    if (bandera) {
+        for (int i = 0; i < 50; ++i) {
+            if (Cliente[cinNumero - 1].Transacciones[i].getCant() != 0) {
+                Cliente[cinNumero - 1].Transacciones[i].mostrarTransaccion();
+            }
+        }
     }
 
     if (!bandera) {
         cout << "Cliente no encontrado" << endl;
     }
 
-}
+}        //LISTO
 
-void mostrarClientes() {
+void mostrarClientes() {                    //LISTO
 
     for (int i = 0; i < 50; i++) {
         if (Cliente[i].getNombre() != "") {
@@ -347,7 +352,7 @@ void mostrarClientes() {
         }
     }
 
-}
+}                //LISTO
 
 void menuExtra() {
     int op = 1;
@@ -378,7 +383,7 @@ void menuExtra() {
             }
         }
     }
-}
+}                      //LISTO
 
 void leerArchivoCliente() {
 
@@ -433,7 +438,7 @@ void leerArchivoCliente() {
         s.clear();
         ubicC++;      //en este while me voy elevando a uno en la ubic del cliente
     }
-}
+}             //LISTO
 
 void leerArchivoMov() {
 
@@ -498,7 +503,7 @@ void leerArchivoMov() {
         nro_T++;      //en este while me voy elevando a uno en la ubic del cliente
     }
 
-}
+}                 //LISTO
 
 
 int main() {
@@ -511,6 +516,7 @@ int main() {
     cout << "Bienvenido a banco UCC" << endl;
     while (opcion > 0 && opcion < 8) {
 
+        try{
         cout << '\n' << endl;
         cout << "Menu:" << endl;
         cout << "1. Alta cliente" << endl;               //Listo
@@ -523,6 +529,10 @@ int main() {
         cout << "8. Salir" << endl;                      //Listo
         cout << '\n' << endl;
         cin >> opcion;
+        throw 0;
+        }catch(std::invalid_argument){
+            cout<<"Ingrese un numero"<<endl;
+        }
 
         switch (opcion) {
             case 1:

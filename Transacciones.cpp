@@ -9,13 +9,13 @@ Transacciones::Transacciones() {
     nro_transaccion=0;
     cantidad_total=0;
     cantidad=0;
-    tipo=' ';
+    tipo=" ";
     dia=0;
     mes=0;
     anio=0;
 }
 
-Transacciones::Transacciones(int _nro_transaccion, float _cantidad_total, float _cantidad, char _tipo, int _dia, int _mes, int _anio) {
+Transacciones::Transacciones(int _nro_transaccion, float _cantidad_total, float _cantidad, string _tipo, int _dia, int _mes, int _anio) {
     nro_transaccion=_nro_transaccion;
     cantidad_total=_cantidad_total;
     cantidad=_cantidad;
@@ -37,7 +37,7 @@ void Transacciones::setCant(float _cantidad) {
     cantidad=_cantidad;
 }
 
-void Transacciones::setTipo(char _tipo) {
+void Transacciones::setTipo(string _tipo) {
     tipo=_tipo;
 }
 
@@ -66,7 +66,7 @@ float Transacciones::getCant() {
     return cantidad;
 }
 
-char Transacciones::getTipo() {
+string Transacciones::getTipo() {
     return tipo;
 }
 
@@ -81,8 +81,6 @@ int Transacciones::getMes() {
 int Transacciones::getAnio() {
     return anio;
 }
-
-
 
 void Transacciones::mostrarTransaccion() {
     cout << "NUMERO DE TRANSACCION: " << getNroTran() << endl;
