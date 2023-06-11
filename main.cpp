@@ -529,10 +529,16 @@ int main() {
         cout << "8. Salir" << endl;                      //Listo
         cout << '\n' << endl;
         cin >> opcion;
-        throw 0;
-        }catch(std::invalid_argument){
-            cout<<"Ingrese un numero"<<endl;
+
+        if(cin.fail()){
+            throw std::invalid_argument("El dato ingresado debe ser un numero entero");
+
         }
+
+    } catch(std::invalid_argument const& e){
+    cout<<"Error: "<<e.what()<<endl;
+    continue;
+}
 
         switch (opcion) {
             case 1:
