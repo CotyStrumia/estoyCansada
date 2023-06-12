@@ -78,6 +78,7 @@ float Clientes::getSaldo() {
 
 void Clientes::baja(int cinnumero) {
     setEstado("BAJA");
+    setSaldo(0);
     cout<<"Su estado es de: "<<getEstado() << endl;
 }
 
@@ -88,6 +89,7 @@ void Clientes::mostrarCliente() {
     cout << "TIPO: " << tipo << endl;
     cout << "ANIO DE APERTURA: " << apertura << endl;
     cout << "ESTADO: " << estado << endl;
+    cout << "SALDO: " << saldo <<endl;
 }
 
 
