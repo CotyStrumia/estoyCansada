@@ -10,8 +10,8 @@ using namespace std;
 class Transacciones {
 protected:
     int nro_transaccion;
-    float cantidad_total;
-    float cantidad;
+    float cantidad_total; //saldo actual
+    float cantidad; //lo que extraemos/depositamos
     string tipo;
     int dia;
     int mes;
