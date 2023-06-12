@@ -3,7 +3,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
-
+#include <limits>
 #include "Clientes.h"
 
 using namespace std;
@@ -117,7 +117,7 @@ void generarClientesTxt() {
         if (Cliente[i].getNumero() != 0) {
             archivoClientes << Cliente[i].getNumero() << "," << Cliente[i].getNombre() << ","
                             << Cliente[i].getApellido() << "," << Cliente[i].getTipo() << ","
-                            << Cliente[i].getApertura() << "," << Cliente[i].getEstado() << endl;
+                            << Cliente[i].getApertura() << "," << Cliente[i].getEstado() <<","<<Cliente[i].getSaldo()<< endl;
         }
     }
     archivoClientes.close();
@@ -159,7 +159,6 @@ void altaCliente() {
 
     cout << "Momento de apertura de la cuenta" << endl;
     cin >> cinApertura;
-
 
     if (verificadorAlta(cinApertura)) {
 
@@ -348,7 +347,7 @@ void mostrarClientes() {                    //LISTO
         if (Cliente[i].getNombre() != "") {
             cout << Cliente[i].getNumero() << " | " << Cliente[i].getNombre() << " | " << Cliente[i].getApellido()
                  << " | " << Cliente[i].getTipo() << " | " << Cliente[i].getApertura() << " | "
-                 << Cliente[i].getEstado() << endl;
+                 << Cliente[i].getEstado() <<" | "<<Cliente[i].getSaldo()<< endl;
         }
     }
 
@@ -429,8 +428,13 @@ void leerArchivoCliente() {
                 }
                 case 5: {
                     Cliente[ubicC].setEstado(dato);
-                    Cliente[ubicC].setSaldo(0);
+
                     break;
+                }
+                case 6: {
+                    int number3;
+                    number3= stof(dato);
+                    Cliente[ubicC].setSaldo(number3);
                 }
             }
             cont++;
@@ -508,67 +512,81 @@ void leerArchivoMov() {
 
 int main() {
     int opcion = 1;
-
+    bool entradaValida = false;
     ifstream fileloaded;
 
     leerArchivoCliente();
     leerArchivoMov();
+    cout << '\n' << endl;
     cout << "Bienvenido a banco UCC" << endl;
-    while (opcion > 0 && opcion < 8) {
+    while (!entradaValida) {
 
-        try{
-        cout << '\n' << endl;
-        cout << "Menu:" << endl;
-        cout << "1. Alta cliente" << endl;               //Listo
-        cout << "2. Baja cliente" << endl;               //Listo
-        cout << "3. Extraccion de dinero" << endl;       //Listo
-        cout << "4. Deposito de dinero" << endl;         //Listo
-        cout << "5. Mas opciones" << endl;               //Listo
-        cout << "6. Ver base de datos de clientes (txt)" << endl;
-        cout << "7. Ver base de datos de transacciones (txt)" << endl;
-        cout << "8. Salir" << endl;                      //Listo
-        cout << '\n' << endl;
-        cin >> opcion;
+        try {
+            cout << '\n' << endl;
+            cout << "Menu:" << endl;
+            cout << "1. Alta cliente" << endl;               //Listo
+            cout << "2. Baja cliente" << endl;               //Listo
+            cout << "3. Extraccion de dinero" << endl;       //Listo
+            cout << "4. Deposito de dinero" << endl;         //Listo
+            cout << "5. Mas opciones" << endl;               //Listo
+            cout << "6. Ver base de datos de clientes (txt)" << endl;
+            cout << "7. Ver base de datos de transacciones (txt)" << endl;
+            cout << "8. Salir" << endl;                      //Listo
+            cout << '\n' << endl;
+            cin >> opcion;
 
-        if(cin.fail()){
-            throw std::invalid_argument("El dato ingresado debe ser un numero entero");
+            if (!cin.good()) {
+                throw runtime_error("ERROR: la opcion ingresada no es valida.");      //error generico
+            } else {
+                entradaValida = true;
+            }
 
+        } catch (const exception &error) {
+            cout << error.what() << endl;     //error.what() nos escribe la descripcion del error que le dimos anteriormente
         }
+        cin.clear(); //limpia la opcion ingresada
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignora todos los caracteres ingresados hasta que encuentra un salto de linea
 
-    } catch(std::invalid_argument const& e){
-    cout<<"Error: "<<e.what()<<endl;
-    continue;
-}
 
         switch (opcion) {
+
             case 1:
                 cout << '\n' << endl;
                 altaCliente();
+                entradaValida=false;
                 break;
             case 2:
                 cout << '\n' << endl;
                 bajaCliente();
+                entradaValida=false;
                 break;
             case 3:
                 cout << '\n' << endl;
                 extraccion();
+                entradaValida=false;
                 break;
             case 4:
                 cout << '\n' << endl;
                 deposito();
+                entradaValida=false;
                 break;
             case 5:
                 cout << '\n' << endl;
                 menuExtra();
+                entradaValida=false;
                 break;
             case 6:
                 cout << '\n' << endl;
                 generarClientesTxt();
+                entradaValida=false;
                 break;
             case 7:
                 cout << '\n' << endl;
                 generarMovimientosTxt();
+                entradaValida=false;
                 break;
         }
+
     }
+
 }
