@@ -15,7 +15,7 @@ Transacciones::Transacciones() {
     anio=0;
 }
 
-Transacciones::Transacciones(int _nro_transaccion, float _cantidad_total, float _cantidad, string _tipo, int _dia, int _mes, int _anio) {
+Transacciones::Transacciones(int _nro_transaccion, long _cantidad_total, long _cantidad, string _tipo, int _dia, int _mes, int _anio) {
     nro_transaccion=_nro_transaccion;
     cantidad_total=_cantidad_total;
     cantidad=_cantidad;
@@ -29,11 +29,11 @@ void Transacciones::setNroTran(int _nro_transaccion){
     nro_transaccion=_nro_transaccion;
 }
 
-void Transacciones::setCantTotal(float _cantidad_total) {
+void Transacciones::setCantTotal(long _cantidad_total) {
     cantidad_total=_cantidad_total;
 }
 
-void Transacciones::setCant(float _cantidad) {
+void Transacciones::setCant(long _cantidad) {
     cantidad=_cantidad;
 }
 
@@ -58,11 +58,11 @@ int Transacciones::getNroTran() {
     return nro_transaccion;
 }
 
-float Transacciones::getCantTotal() {
+long Transacciones::getCantTotal() {
     return cantidad_total;
 }
 
-float Transacciones::getCant() {
+long Transacciones::getCant() {
     return cantidad;
 }
 
