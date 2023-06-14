@@ -13,7 +13,7 @@ protected:
     string tipo;
     int apertura;
     string estado;
-    float saldo;
+    long saldo;
 public:
 
     Transacciones Transacciones[50];
@@ -21,7 +21,7 @@ public:
     tarjetas tarjetas;
 
     Clientes();
-    Clientes(int, string, string, string, int, string, float);
+    Clientes(int, string, string, string, int, string, long);
 
     void setNumero(int _numero);
     void setNombre(string _nombre);
@@ -29,7 +29,7 @@ public:
     void setTipo (string _tipo);
     void setApertura (int _apertura);
     void setEstado (string _estado);
-    void setSaldo(float _saldo);
+    void setSaldo(long _saldo);
 
     int getNumero();
     string getNombre();
@@ -37,7 +37,7 @@ public:
     string getTipo();
     int getApertura();
     string getEstado();
-    float getSaldo();
+    long getSaldo();
 
     void baja(int);
     void mostrarCliente();
