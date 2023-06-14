@@ -10,27 +10,27 @@ using namespace std;
 class Transacciones {
 protected:
     int nro_transaccion;
-    float cantidad_total; //saldo actual
-    float cantidad; //lo que extraemos/depositamos
+    long cantidad_total; //saldo actual
+    long cantidad; //lo que extraemos/depositamos
     string tipo;
     int dia;
     int mes;
     int anio;
 public:
     Transacciones();
-    Transacciones(int, float, float, string, int, int , int);
+    Transacciones(int, long, long, string, int, int , int);
 
     void setNroTran(int _nro_transaccion);
-    void setCantTotal(float _cantidad_total);
-    void setCant(float _cantidad);
+    void setCantTotal(long _cantidad_total);
+    void setCant(long _cantidad);
     void setTipo(string _tipo);
     void setDia(int _dia);
     void setMes(int _mes);
     void setAnio(int _anio);
 
     int getNroTran();
-    float getCantTotal();
-    float getCant();
+    long getCantTotal();
+    long getCant();
     string getTipo();
     int getDia();
     int getMes();
