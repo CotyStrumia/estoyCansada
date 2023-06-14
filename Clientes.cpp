@@ -12,7 +12,7 @@ Clientes::Clientes(){
     saldo=0;
 }
 
-Clientes::Clientes(int _numero, string _nombre, string _apellido, string _tipo, int _apertura, string _estado, float _saldo) {
+Clientes::Clientes(int _numero, string _nombre, string _apellido, string _tipo, int _apertura, string _estado, long _saldo) {
     numero = _numero;
     nombre = _nombre;
     apellido = _apellido;
@@ -69,10 +69,10 @@ string Clientes::getEstado(){
     return estado;
 }
 
-void Clientes::setSaldo(float _saldo) {
+void Clientes::setSaldo(long _saldo) {
     saldo=_saldo;
 }
-float Clientes::getSaldo() {
+long Clientes::getSaldo() {
     return saldo;
 }
 
