@@ -198,7 +198,7 @@ void bajaCliente() {
 
 void extraccion() { //LISTO BR0
     int cinNumero, dia, mes, anio, i = 0;
-    float cinMonto;
+    long cinMonto;
 
     cout << "Ingrese el dia: " << endl;
     cin >> dia;
@@ -253,7 +253,7 @@ void extraccion() { //LISTO BR0
 
 void deposito() {
     int cinNumero, dia, mes, anio, i = 0;
-    float cinMonto;
+    long cinMonto;
 
     cout << "Ingrese el dia: " << endl;
     cin >> dia;
@@ -433,7 +433,7 @@ void leerArchivoCliente() {
                 }
                 case 6: {
                     int number3;
-                    number3= stof(dato);
+                    number3= stol(dato);
                     Cliente[ubicC].setSaldo(number3);
                 }
             }
@@ -474,7 +474,7 @@ void leerArchivoMov() {
                 }
                 case 2: {
                     float number3;
-                    number3 = stof(dato);
+                    number3 = stol(dato);
                     Cliente[Cliente[ubicC].getNumero() - 1].Transacciones[nro_T].setCant(number3);
                     break;
                 }
@@ -542,10 +542,12 @@ int main() {
             }
 
         } catch (const exception &error) {
-            cout << error.what() << endl;     //error.what() nos escribe la descripcion del error que le dimos anteriormente
+            cout << error.what()
+                 << endl;     //error.what() nos escribe la descripcion del error que le dimos anteriormente
         }
         cin.clear(); //limpia la opcion ingresada
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignora todos los caracteres ingresados hasta que encuentra un salto de linea
+        cin.ignore(numeric_limits<streamsize>::max(),
+                   '\n'); //ignora todos los caracteres ingresados hasta que encuentra un salto de línea
 
 
         switch (opcion) {
@@ -553,37 +555,37 @@ int main() {
             case 1:
                 cout << '\n' << endl;
                 altaCliente();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 2:
                 cout << '\n' << endl;
                 bajaCliente();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 3:
                 cout << '\n' << endl;
                 extraccion();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 4:
                 cout << '\n' << endl;
                 deposito();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 5:
                 cout << '\n' << endl;
                 menuExtra();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 6:
                 cout << '\n' << endl;
                 generarClientesTxt();
-                entradaValida=false;
+                entradaValida = false;
                 break;
             case 7:
                 cout << '\n' << endl;
                 generarMovimientosTxt();
-                entradaValida=false;
+                entradaValida = false;
                 break;
         }
 
