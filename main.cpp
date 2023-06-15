@@ -196,7 +196,7 @@ void bajaCliente() {
     }
 }                    //LISTO
 
-void extraccion() { //LISTO BR0
+void extraccion() { //LISTO
     int cinNumero, dia, mes, anio, i = 0;
     long cinMonto;
 
