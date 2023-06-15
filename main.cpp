@@ -587,6 +587,8 @@ int main() {
                 generarMovimientosTxt();
                 entradaValida = false;
                 break;
+            case 8:
+                break;
         }
 
     }
